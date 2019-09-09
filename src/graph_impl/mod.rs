@@ -123,6 +123,12 @@ impl<Ix: fmt::Debug> fmt::Debug for NodeIndex<Ix>
     }
 }
 
+impl<Ix: Copy> From<&NodeIndex<Ix>> for NodeIndex<Ix> {
+    fn from(reference: &Self) -> Self {
+        Self(reference.0)
+    }
+}
+
 /// Short version of `NodeIndex::new`
 pub fn node_index<Ix: IndexType>(index: usize) -> NodeIndex<Ix> { NodeIndex::new(index) }
 
